@@ -1,104 +1,149 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { useSubjects } from "@/hooks/useSubjects";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import Navbar from "@/components/layout/Navbar";
 import Sidebar from "@/components/layout/Sidebar";
-import EmptyState from "@/components/ui/EmptyState";
-
-// Placeholder subject cards for Phase 2
-const PLACEHOLDER_SUBJECTS = [
-  {
-    id: "subject-1",
-    name: "Data Structures",
-    code: "CS 201",
-    color: "#6366f1",
-    memberCount: 12,
-  },
-  {
-    id: "subject-2",
-    name: "Calculus II",
-    code: "MATH 102",
-    color: "#f59e0b",
-    memberCount: 8,
-  },
-];
-
-function SubjectCardSkeleton({ subject }) {
-  return (
-    <div className="group relative flex overflow-hidden rounded-xl border border-surface-border bg-surface-card shadow-sm transition-shadow hover:shadow-md animate-fade-in">
-      {/* Color accent bar */}
-      <div
-        className="w-1.5 shrink-0"
-        style={{ backgroundColor: subject.color }}
-      />
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between">
-          <div>
-            <h3 className="text-base font-semibold text-gray-900">
-              {subject.name}
-            </h3>
-            <p className="mt-0.5 text-sm text-surface-muted">{subject.code}</p>
-          </div>
-          <span className="rounded-full bg-brand-muted px-2.5 py-0.5 text-xs font-medium text-brand-dark">
-            {subject.memberCount} members
-          </span>
-        </div>
-        <div className="mt-4 flex items-center gap-2 text-xs text-surface-muted">
-          <span>Click to view notes &amp; files</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+import SubjectGrid from "@/components/subject/SubjectGrid";
+import AddSubjectModal from "@/components/subject/AddSubjectModal";
+import { UserPlus, X } from "lucide-react";
 
 export default function DashboardPage() {
   const { user, loading, userProfile } = useRequireAuth();
+  const {
+    subjects,
+    loading: subjectsLoading,
+    addSubject,
+    deleteSubject,
+    joinByCode,
+  } = useSubjects(user?.uid);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [joinOpen, setJoinOpen] = useState(false);
+  const [joinCode, setJoinCode] = useState("");
+  const [joining, setJoining] = useState(false);
+  const joinRef = useRef(null);
+
+  // Close join popover on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (joinRef.current && !joinRef.current.contains(e.target)) {
+        setJoinOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
   if (!user) {
-    return null; // useRequireAuth will redirect to /login
+    return null;
   }
 
   const displayName = userProfile?.displayName || user.displayName || "Student";
 
+  const handleJoinByCode = async () => {
+    if (!joinCode.trim()) return;
+    setJoining(true);
+    try {
+      await joinByCode(joinCode);
+      setJoinCode("");
+      setJoinOpen(false);
+    } catch {
+      // Error toast handled in hook
+    } finally {
+      setJoining(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen bg-surface">
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        subjects={subjects}
+        onAddSubject={() => setAddModalOpen(true)}
+      />
 
       <div className="flex flex-1 flex-col">
         <Navbar onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
 
         <main className="flex-1 p-6 space-y-6">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Welcome back, {displayName} 👋
-          </h1>
+          {/* Header row */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Welcome back, {displayName} 👋
+            </h1>
 
-          {/* Subject grid */}
-          {PLACEHOLDER_SUBJECTS.length > 0 ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {PLACEHOLDER_SUBJECTS.map((subject) => (
-                <SubjectCardSkeleton key={subject.id} subject={subject} />
-              ))}
+            {/* Join by Code button */}
+            <div className="relative" ref={joinRef}>
+              <button
+                onClick={() => setJoinOpen((prev) => !prev)}
+                className="flex items-center gap-2 rounded-lg border border-surface-border bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-surface"
+              >
+                <UserPlus className="h-4 w-4" />
+                Join by Code
+              </button>
+
+              {joinOpen && (
+                <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-surface-border bg-white p-4 shadow-lg animate-fade-in">
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-sm font-semibold text-gray-900">
+                      Enter Share Code
+                    </p>
+                    <button
+                      onClick={() => setJoinOpen(false)}
+                      className="rounded p-0.5 text-surface-muted hover:text-gray-700"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    value={joinCode}
+                    onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
+                    placeholder="e.g. ABC123"
+                    maxLength={6}
+                    className="mb-3 w-full rounded-lg border border-surface-border bg-white px-3 py-2 text-center text-lg font-bold tracking-widest text-gray-900 uppercase placeholder-gray-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand-muted mono"
+                  />
+                  <button
+                    onClick={handleJoinByCode}
+                    disabled={joinCode.trim().length !== 6 || joining}
+                    className="w-full rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {joining ? "Joining..." : "Join Subject"}
+                  </button>
+                </div>
+              )}
             </div>
+          </div>
+
+          {/* Subjects */}
+          {subjectsLoading ? (
+            <LoadingSpinner fullPage={false} size="md" />
           ) : (
-            <EmptyState
-              icon="BookOpen"
-              title="No subjects yet"
-              description="Create your first subject or join one with a share code."
-              actionLabel="Add Subject"
-              onAction={() => {
-                // Will open AddSubjectModal in Phase 3
-              }}
+            <SubjectGrid
+              subjects={subjects}
+              currentUserId={user.uid}
+              onDelete={deleteSubject}
+              onAddSubject={() => setAddModalOpen(true)}
             />
           )}
         </main>
       </div>
+
+      {/* Add Subject Modal */}
+      <AddSubjectModal
+        isOpen={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        onAdd={addSubject}
+      />
     </div>
   );
 }

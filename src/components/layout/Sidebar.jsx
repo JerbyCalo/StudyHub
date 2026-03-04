@@ -2,27 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { BookOpen, Code, Plus, X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 
-// Static placeholder subjects for Phase 2
-const DUMMY_SUBJECTS = [
-  {
-    id: "subject-1",
-    name: "Data Structures",
-    code: "CS 201",
-    color: "#6366f1",
-    icon: "Code",
-  },
-  {
-    id: "subject-2",
-    name: "Calculus II",
-    code: "MATH 102",
-    color: "#f59e0b",
-    icon: "BookOpen",
-  },
-];
-
-export default function Sidebar({ isOpen, onClose }) {
+/**
+ * Sidebar — subject list sidebar.
+ * Props: isOpen, onClose, subjects (from useSubjects), onAddSubject
+ */
+export default function Sidebar({
+  isOpen,
+  onClose,
+  subjects = [],
+  onAddSubject,
+}) {
   const pathname = usePathname();
 
   return (
@@ -64,7 +55,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
         {/* Subject list */}
         <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
-          {DUMMY_SUBJECTS.map((subject) => {
+          {subjects.map((subject) => {
             const isActive = pathname === `/subject/${subject.id}`;
             return (
               <Link
@@ -99,7 +90,7 @@ export default function Sidebar({ isOpen, onClose }) {
             );
           })}
 
-          {DUMMY_SUBJECTS.length === 0 && (
+          {subjects.length === 0 && (
             <p className="px-3 py-6 text-center text-sm text-surface-muted">
               No subjects yet
             </p>
@@ -110,7 +101,8 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="border-t border-surface-border p-3">
           <button
             onClick={() => {
-              // Will open AddSubjectModal in Phase 3
+              if (onAddSubject) onAddSubject();
+              onClose();
             }}
             className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
           >

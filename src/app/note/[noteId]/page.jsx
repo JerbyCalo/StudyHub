@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useNotes } from "@/hooks/useNotes";
@@ -11,7 +11,7 @@ import Navbar from "@/components/layout/Navbar";
 import { ArrowLeft, Trash2 } from "lucide-react";
 import { formatRelativeDate } from "@/utils/formatDate";
 
-export default function ViewEditNotePage({ params }) {
+function ViewEditNotePageInner({ params }) {
   const { noteId } = use(params);
   const searchParams = useSearchParams();
   const subjectId = searchParams.get("subjectId");
@@ -186,5 +186,13 @@ export default function ViewEditNotePage({ params }) {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function ViewEditNotePage({ params }) {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <ViewEditNotePageInner params={params} />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useNotes } from "@/hooks/useNotes";
@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 export const dynamic = "force-dynamic";
 
-export default function NewNotePage() {
+function NewNotePageInner() {
   const { user, loading, userProfile } = useRequireAuth();
   const searchParams = useSearchParams();
   const subjectId = searchParams.get("subjectId");
@@ -126,5 +126,13 @@ export default function NewNotePage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function NewNotePage() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <NewNotePageInner />
+    </Suspense>
   );
 }

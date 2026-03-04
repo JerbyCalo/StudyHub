@@ -4,6 +4,7 @@ A student-focused notes and file sharing web app. Organize notes by subject, upl
 
 ## Live Demo
 
+studyhub-byjc.vercel.app
 
 ## ✨ Features
 
@@ -65,7 +66,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 
 ## 📁 Project Structure
 

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useNotes } from "@/hooks/useNotes";
 import NoteEditor from "@/components/notes/NoteEditor";
+import NoteEditorBoundary from "@/components/notes/NoteEditorBoundary";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import Navbar from "@/components/layout/Navbar";
 import { ArrowLeft } from "lucide-react";
@@ -93,7 +94,9 @@ export default function NewNotePage() {
           />
 
           {/* Editor */}
-          <NoteEditor initialContent="" onChange={setContent} />
+          <NoteEditorBoundary>
+            <NoteEditor initialContent="" onChange={setContent} />
+          </NoteEditorBoundary>
 
           {/* Actions */}
           <div className="flex items-center justify-end gap-3">

@@ -9,7 +9,11 @@ export default function EmptyState({
   actionLabel,
   onAction,
 }) {
-  const IconComponent = LucideIcons[icon] || LucideIcons.Inbox;
+  // Accept either a string name ("BookOpen") or a component reference
+  const IconComponent =
+    typeof icon === "string"
+      ? LucideIcons[icon] || LucideIcons.Inbox
+      : icon || LucideIcons.Inbox;
 
   return (
     <div className="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-surface-border bg-surface-card p-12 text-center animate-fade-in">

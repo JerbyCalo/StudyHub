@@ -2,7 +2,6 @@
 
 import FileCard from "@/components/files/FileCard";
 import EmptyState from "@/components/ui/EmptyState";
-import { FolderOpen } from "lucide-react";
 
 /**
  * FileList — renders a list of FileCards or skeleton/empty states.
@@ -35,7 +34,7 @@ export default function FileList({ files, onDelete, loading }) {
   if (!files || files.length === 0) {
     return (
       <EmptyState
-        icon={FolderOpen}
+        icon="FolderOpen"
         title="No files yet"
         description="Upload PDFs, slides, or documents to share with your class."
       />

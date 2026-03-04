@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User profiles — only the owner can read/write their own document
+    match /users/{uid} {
+      allow read, write: if request.auth.uid == uid;
+    }
+
+    // Subjects
+    match /subjects/{subjectId} {
+      // Any member can read the subject
+      allow read:   if request.auth.uid in resource.data.memberIds;
+      // Any authenticated user can create a subject
+      allow create: if request.auth != null;
+      // Any member can update the subject (e.g. joining adds to memberIds)
+      allow update: if request.auth.uid in resource.data.memberIds;
+      // Only the owner can delete the subject
+      allow delete: if request.auth.uid == resource.data.ownerId;
+
+      // Notes subcollection — members only
+      match /notes/{noteId} {
+        allow read, write: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+      }
+
+      // Files subcollection — members only
+      match /files/{fileId} {
+        allow read, write: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+      }
+    }
+
+  }
+}

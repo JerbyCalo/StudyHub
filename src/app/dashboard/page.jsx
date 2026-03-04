@@ -115,8 +115,9 @@ export default function DashboardPage() {
                   <button
                     onClick={handleJoinByCode}
                     disabled={joinCode.trim().length !== 6 || joining}
-                    className="w-full rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                   >
+                    {joining && <LoadingSpinner variant="button" />}
                     {joining ? "Joining..." : "Join Subject"}
                   </button>
                 </div>

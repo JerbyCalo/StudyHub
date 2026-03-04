@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, Copy, Check } from "lucide-react";
+import toast from "react-hot-toast";
 
 /**
  * ShareLinkModal — modal to share a subject's join code.
@@ -16,9 +17,10 @@ export default function ShareLinkModal({ subject, isOpen, onClose }) {
     try {
       await navigator.clipboard.writeText(subject.shareCode || "");
       setCopied(true);
+      toast.success("Share code copied!");
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback — select-and-copy not needed for modern browsers
+      toast.error("Failed to copy. Please copy it manually.");
     }
   };
 

@@ -80,7 +80,7 @@ export default function SubjectCard({ subject, onDelete, currentUserId }) {
                   e.stopPropagation();
                   setMenuOpen((prev) => !prev);
                 }}
-                className="rounded-lg p-1 text-surface-muted opacity-0 transition-all hover:bg-surface hover:text-gray-700 group-hover:opacity-100"
+                className="rounded-lg p-1 text-surface-muted transition-all hover:bg-surface hover:text-gray-700 opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
                 aria-label="Subject options"
               >
                 <MoreVertical className="h-4 w-4" />

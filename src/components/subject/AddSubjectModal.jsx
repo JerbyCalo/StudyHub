@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import * as LucideIcons from "lucide-react";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 const PRESET_COLORS = [
   "#6366f1",
@@ -160,8 +161,9 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
           <button
             onClick={handleSubmit}
             disabled={!name.trim() || !code.trim() || submitting}
-            className="rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center gap-2 rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
           >
+            {submitting && <LoadingSpinner variant="button" />}
             {submitting ? "Creating..." : "Create Subject"}
           </button>
         </div>

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useNotes } from "@/hooks/useNotes";
 import NoteEditor from "@/components/notes/NoteEditor";
+import NoteEditorBoundary from "@/components/notes/NoteEditorBoundary";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import Navbar from "@/components/layout/Navbar";
 import { ArrowLeft, Trash2 } from "lucide-react";
@@ -141,10 +142,12 @@ export default function ViewEditNotePage({ params }) {
           </div>
 
           {/* Editor */}
-          <NoteEditor
-            initialContent={note.content || ""}
-            onChange={setContent}
-          />
+          <NoteEditorBoundary>
+            <NoteEditor
+              initialContent={note.content || ""}
+              onChange={setContent}
+            />
+          </NoteEditorBoundary>
 
           {/* Actions */}
           <div className="flex items-center justify-between">

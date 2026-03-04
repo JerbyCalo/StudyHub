@@ -16,6 +16,7 @@ import FileList from "@/components/files/FileList";
 import ShareLinkModal from "@/components/share/ShareLinkModal";
 import AddSubjectModal from "@/components/subject/AddSubjectModal";
 import { Share2, FolderOpen } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 
 export default function SubjectDetailPage({ params }) {
   const { subjectId } = use(params);
@@ -98,27 +99,56 @@ export default function SubjectDetailPage({ params }) {
 
         <main className="flex-1 p-6 space-y-6">
           {/* Subject header */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
+          <div className="rounded-xl border border-surface-border bg-surface-card shadow-sm overflow-hidden">
+            <div className="flex items-center gap-4 p-5">
+              {/* Left color accent bar */}
               <div
-                className="h-10 w-1.5 rounded-full"
+                className="self-stretch w-1 rounded-full shrink-0"
                 style={{ backgroundColor: subject.color }}
               />
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  {subject.name}
-                </h1>
-                <p className="text-sm text-surface-muted">{subject.code}</p>
-              </div>
-            </div>
 
-            <button
-              onClick={() => setShareOpen(true)}
-              className="flex items-center gap-2 rounded-lg border border-surface-border bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-surface"
-            >
-              <Share2 className="h-4 w-4" />
-              Share
-            </button>
+              {/* Subject icon */}
+              {(() => {
+                const SubjectIcon =
+                  LucideIcons[subject.icon] || LucideIcons.BookOpen;
+                return (
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: subject.color + "22" }}
+                  >
+                    <SubjectIcon
+                      className="h-5 w-5"
+                      style={{ color: subject.color }}
+                    />
+                  </div>
+                );
+              })()}
+
+              {/* Name + badge */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-xl font-bold text-gray-900 truncate">
+                    {subject.name}
+                  </h1>
+                  <span className="shrink-0 rounded-full border border-surface-border bg-surface px-2.5 py-0.5 text-xs font-medium text-surface-muted">
+                    {subject.code}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-sm text-surface-muted">
+                  {subject.memberIds?.length || 0}{" "}
+                  {subject.memberIds?.length === 1 ? "member" : "members"}
+                </p>
+              </div>
+
+              {/* Share button */}
+              <button
+                onClick={() => setShareOpen(true)}
+                className="shrink-0 flex items-center gap-2 rounded-lg border border-surface-border bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-surface"
+              >
+                <Share2 className="h-4 w-4" />
+                Share
+              </button>
+            </div>
           </div>
 
           {/* Two-column layout: Notes + Files placeholder */}

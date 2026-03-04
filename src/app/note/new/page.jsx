@@ -11,6 +11,8 @@ import Navbar from "@/components/layout/Navbar";
 import { ArrowLeft } from "lucide-react";
 import toast from "react-hot-toast";
 
+export const dynamic = "force-dynamic";
+
 export default function NewNotePage() {
   const { user, loading, userProfile } = useRequireAuth();
   const searchParams = useSearchParams();

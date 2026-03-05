@@ -3,27 +3,28 @@
 
 @theme inline {
   /* ── Baylo Brand Palette ── */
-  --color-brand-yellow:       #FCC823;
-  --color-brand-yellow-light: #F9E578;
-  --color-brand-gold:         #EDA30E;
-  --color-brand-teal:         #2BCFDB;
-  --color-brand-teal-dark:    #07363E;
-  --color-brand-brown:        #8F5F2E;
+  --color-brand-yellow: #fcc823;
+  --color-brand-yellow-light: #f9e578;
+  --color-brand-gold: #eda30e;
+  --color-brand-teal: #2bcfdb;
+  --color-brand-teal-dark: #07363e;
+  --color-brand-brown: #8f5f2e;
+  --color-sidebar-divider: #1e5468;
 
   /* ── Surface ── */
-  --color-surface:            #FFFDF0;
-  --color-surface-card:       #FFFFFF;
-  --color-surface-border:     #8F5F2E;
-  --color-surface-muted:      #8F5F2E;
+  --color-surface: #fffdf0;
+  --color-surface-card: #ffffff;
+  --color-surface-border: #8f5f2e;
+  --color-surface-muted: #8f5f2e;
 }
 
 :root {
-  --yellow:       #FCC823;
-  --yellow-light: #F9E578;
-  --gold:         #EDA30E;
-  --teal:         #2BCFDB;
-  --teal-dark:    #07363E;
-  --brown:        #8F5F2E;
+  --yellow: #fcc823;
+  --yellow-light: #f9e578;
+  --gold: #eda30e;
+  --teal: #2bcfdb;
+  --teal-dark: #07363e;
+  --brown: #8f5f2e;
 }
 
 body {
@@ -113,8 +114,8 @@ body {
 }
 
 .tiptap-editor code {
-  background-color: #F9E578;
-  color: #07363E;
+  background-color: #f9e578;
+  color: #07363e;
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-family: "JetBrains Mono", monospace;
@@ -148,7 +149,7 @@ body {
 }
 
 .tiptap-editor blockquote {
-  border-left: 3px solid #2BCFDB;
+  border-left: 3px solid #2bcfdb;
   padding-left: 1rem;
   color: #6b7280;
   margin-bottom: 0.75rem;

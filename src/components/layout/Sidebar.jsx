@@ -29,13 +29,13 @@ export default function Sidebar({
       {/* Sidebar panel */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-brand-brown bg-brand-teal-dark transition-transform duration-200 ease-in-out
+          fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-sidebar-divider bg-brand-teal-dark transition-transform duration-200 ease-in-out
           lg:static lg:translate-x-0
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* Sidebar header (mobile only — close button) */}
-        <div className="flex h-16 items-center justify-between border-b border-brand-brown px-4 lg:hidden">
+        <div className="flex h-16 items-center justify-between border-b border-sidebar-divider px-4 lg:hidden">
           <span className="text-lg font-bold text-white">Subjects</span>
           <button
             onClick={onClose}
@@ -47,7 +47,7 @@ export default function Sidebar({
         </div>
 
         {/* Sidebar title (desktop only) */}
-        <div className="hidden lg:flex h-16 items-center border-b border-brand-brown px-4">
+        <div className="hidden lg:flex h-16 items-center border-b border-sidebar-divider px-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
             My Subjects
           </span>
@@ -66,8 +66,8 @@ export default function Sidebar({
                   group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors
                   ${
                     isActive
-                    ? "bg-brand-yellow text-brand-teal-dark"
-                    : "text-white/80 hover:bg-white/10"
+                      ? "bg-brand-yellow text-brand-teal-dark"
+                      : "text-white/80 hover:bg-white/10"
                   }
                 `}
               >
@@ -98,7 +98,7 @@ export default function Sidebar({
         </nav>
 
         {/* Add Subject button — pinned at bottom */}
-        <div className="border-t border-brand-brown p-3">
+        <div className="border-t border-sidebar-divider p-3">
           <button
             onClick={() => {
               if (onAddSubject) onAddSubject();

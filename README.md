@@ -4,7 +4,7 @@ A student-focused notes and file sharing web app. Organize notes by subject, upl
 
 ## Live Demo
 
-studyhub-byjc.vercel.app
+https://studyhub-byjc.vercel.app/
 
 ## ✨ Features
 

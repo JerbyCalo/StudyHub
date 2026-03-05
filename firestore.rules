@@ -11,8 +11,9 @@ service cloud.firestore {
 
     // Subjects
     match /subjects/{subjectId} {
-      // Any member can read the subject
-      allow read:   if request.auth.uid in resource.data.memberIds;
+      // Any authenticated user can read subject metadata (needed for joinByCode query);
+      // sensitive content (notes, files) is protected by subcollection rules below
+      allow read:   if request.auth != null;
       // Any authenticated user can create a subject
       allow create: if request.auth != null;
       // Any authenticated user can update a subject (required for joinByCode,

@@ -151,14 +151,18 @@ function ViewEditNotePageInner({ params }) {
 
           {/* Actions */}
           <div className="flex items-center justify-between">
-            <button
-              onClick={handleDelete}
-              disabled={deleting}
-              className="flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
-            >
-              <Trash2 className="h-4 w-4" />
-              {deleting ? "Deleting..." : "Delete"}
-            </button>
+            {user.uid === note.authorId ? (
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:opacity-50"
+              >
+                <Trash2 className="h-4 w-4" />
+                {deleting ? "Deleting..." : "Delete"}
+              </button>
+            ) : (
+              <div />
+            )}
 
             <div className="flex items-center gap-3">
               <button

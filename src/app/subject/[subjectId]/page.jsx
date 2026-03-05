@@ -159,6 +159,7 @@ export default function SubjectDetailPage({ params }) {
                 notes={notes}
                 subjectId={subjectId}
                 loading={notesLoading}
+                currentUserId={user.uid}
               />
             </section>
 
@@ -179,6 +180,7 @@ export default function SubjectDetailPage({ params }) {
                   files={files}
                   onDelete={deleteFile}
                   loading={filesLoading}
+                  currentUserId={user.uid}
                 />
               </div>
             </section>

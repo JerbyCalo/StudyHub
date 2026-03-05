@@ -11,7 +11,7 @@ import EmptyState from "@/components/ui/EmptyState";
  *   onDelete — (fileId, storagePath) => Promise
  *   loading  — boolean
  */
-export default function FileList({ files, onDelete, loading }) {
+export default function FileList({ files, onDelete, loading, currentUserId }) {
   if (loading) {
     return (
       <div className="space-y-3">
@@ -44,7 +44,12 @@ export default function FileList({ files, onDelete, loading }) {
   return (
     <div className="space-y-3">
       {files.map((file) => (
-        <FileCard key={file.id} file={file} onDelete={onDelete} />
+        <FileCard
+          key={file.id}
+          file={file}
+          onDelete={onDelete}
+          currentUserId={currentUserId}
+        />
       ))}
     </div>
   );

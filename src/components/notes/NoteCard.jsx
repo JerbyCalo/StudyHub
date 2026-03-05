@@ -23,9 +23,9 @@ function stripHtml(html) {
 
 /**
  * NoteCard — card for a single note.
- * Props: note, subjectId
+ * Props: note, subjectId, currentUserId
  */
-export default function NoteCard({ note, subjectId }) {
+export default function NoteCard({ note, subjectId, currentUserId }) {
   const router = useRouter();
 
   const preview = stripHtml(note.content);

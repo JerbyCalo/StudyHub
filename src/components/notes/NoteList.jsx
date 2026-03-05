@@ -9,7 +9,7 @@ import { Plus, FileText } from "lucide-react";
  * NoteList — list of notes with a "New Note" button.
  * Props: notes, subjectId, loading
  */
-export default function NoteList({ notes, subjectId, loading }) {
+export default function NoteList({ notes, subjectId, loading, currentUserId }) {
   const router = useRouter();
 
   const handleNewNote = () => {
@@ -70,7 +70,12 @@ export default function NoteList({ notes, subjectId, loading }) {
       {!loading && notes.length > 0 && (
         <div className="space-y-3">
           {notes.map((note) => (
-            <NoteCard key={note.id} note={note} subjectId={subjectId} />
+            <NoteCard
+              key={note.id}
+              note={note}
+              subjectId={subjectId}
+              currentUserId={currentUserId}
+            />
           ))}
         </div>
       )}

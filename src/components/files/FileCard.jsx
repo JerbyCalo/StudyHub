@@ -13,7 +13,7 @@ import { formatDisplayDate } from "@/utils/formatDate";
  *   file     — Firestore file document
  *   onDelete — (fileId) => Promise
  */
-export default function FileCard({ file, onDelete }) {
+export default function FileCard({ file, onDelete, currentUserId }) {
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
@@ -79,33 +79,34 @@ export default function FileCard({ file, onDelete }) {
           <Download className="h-4 w-4" />
         </a>
 
-        {/* Delete / Confirm */}
-        {confirmingDelete ? (
-          <div className="flex items-center gap-1">
+        {/* Delete / Confirm — only visible to the uploader */}
+        {currentUserId === file.uploaderId &&
+          (confirmingDelete ? (
+            <div className="flex items-center gap-1">
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="rounded-md bg-red-600 px-2.5 py-1 text-xs font-semibold text-white transition-colors hover:bg-red-700 disabled:opacity-50"
+              >
+                {deleting ? "..." : "Confirm"}
+              </button>
+              <button
+                onClick={() => setConfirmingDelete(false)}
+                disabled={deleting}
+                className="rounded-md bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-200 disabled:opacity-50"
+              >
+                Cancel
+              </button>
+            </div>
+          ) : (
             <button
-              onClick={handleDelete}
-              disabled={deleting}
-              className="rounded-md bg-red-600 px-2.5 py-1 text-xs font-semibold text-white transition-colors hover:bg-red-700 disabled:opacity-50"
+              onClick={() => setConfirmingDelete(true)}
+              className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-600"
+              title="Delete"
             >
-              {deleting ? "..." : "Confirm"}
+              <Trash2 className="h-4 w-4" />
             </button>
-            <button
-              onClick={() => setConfirmingDelete(false)}
-              disabled={deleting}
-              className="rounded-md bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 transition-colors hover:bg-gray-200 disabled:opacity-50"
-            >
-              Cancel
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => setConfirmingDelete(true)}
-            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-red-50 hover:text-red-600"
-            title="Delete"
-          >
-            <Trash2 className="h-4 w-4" />
-          </button>
-        )}
+          ))}
       </div>
     </div>
   );

@@ -18,16 +18,26 @@ service cloud.firestore {
       // Only the owner can delete the subject
       allow delete: if request.auth.uid == resource.data.ownerId;
 
-      // Notes subcollection — members only
+      // Notes subcollection
       match /notes/{noteId} {
-        allow read, write: if request.auth.uid in
+        allow read: if request.auth.uid in
           get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow create: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow update: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow delete: if request.auth.uid == resource.data.authorId;
       }
 
-      // Files subcollection — members only
+      // Files subcollection
       match /files/{fileId} {
-        allow read, write: if request.auth.uid in
+        allow read: if request.auth.uid in
           get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow create: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow update: if request.auth.uid in
+          get(/databases/$(database)/documents/subjects/$(subjectId)).data.memberIds;
+        allow delete: if request.auth.uid == resource.data.uploaderId;
       }
     }
 

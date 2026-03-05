@@ -1,6 +1,6 @@
-# 📚 StudyHub
+# 📚 Baylo
 
-A student-focused notes and file sharing web app. Organize notes by subject, upload files, and collaborate with classmates using share codes — all in one clean, mobile-friendly interface.
+A student platform for exchanging notes, files, and knowledge with classmates. Organize notes by subject, upload files, and collaborate with classmates using share codes — all in one clean, mobile-friendly interface.
 
 ## Live Demo
 

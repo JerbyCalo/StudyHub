@@ -1,7 +1,8 @@
 {
-  "name": "studyhub",
+  "name": "baylo",
   "version": "0.1.0",
   "private": true,
+  "description": "Baylo — A student platform for exchanging notes and files",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

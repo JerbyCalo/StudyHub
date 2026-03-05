@@ -2,9 +2,9 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 export const metadata = {
-  title: "StudyHub — Student Notes & File Sharing",
+  title: "Baylo",
   description:
-    "A student-focused notes and file sharing platform. Organize notes by subject, share files with classmates, and collaborate easily.",
+    "Baylo — Exchange notes, files, and knowledge with your classmates.",
 };
 
 export default function RootLayout({ children }) {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { BookOpen, Loader2 } from "lucide-react";
+import { ArrowLeftRight, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -33,8 +33,8 @@ export default function LoginPage() {
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
         <div className="mb-8 flex items-center justify-center gap-2">
-          <BookOpen className="h-8 w-8 text-brand" />
-          <span className="text-2xl font-bold text-brand">StudyHub</span>
+          <ArrowLeftRight className="h-8 w-8 text-brand" />
+          <span className="text-2xl font-bold text-brand">Baylo</span>
         </div>
 
         {/* Card */}
@@ -43,7 +43,7 @@ export default function LoginPage() {
             Welcome back
           </h1>
           <p className="mb-6 text-sm text-surface-muted">
-            Sign in to continue to StudyHub.
+            Sign in to continue to Baylo.
           </p>
 
           <div className="space-y-4">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { BookOpen, Loader2 } from "lucide-react";
+import { ArrowLeftRight, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 export default function RegisterPage() {
@@ -36,8 +36,8 @@ export default function RegisterPage() {
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
         <div className="mb-8 flex items-center justify-center gap-2">
-          <BookOpen className="h-8 w-8 text-brand" />
-          <span className="text-2xl font-bold text-brand">StudyHub</span>
+          <ArrowLeftRight className="h-8 w-8 text-brand" />
+          <span className="text-2xl font-bold text-brand">Baylo</span>
         </div>
 
         {/* Card */}
@@ -46,7 +46,7 @@ export default function RegisterPage() {
             Create your account
           </h1>
           <p className="mb-6 text-sm text-surface-muted">
-            Join StudyHub and start sharing notes with classmates.
+            Join Baylo and start sharing notes with classmates.
           </p>
 
           <div className="space-y-4">

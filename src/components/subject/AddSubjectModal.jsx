@@ -61,7 +61,7 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-md rounded-2xl border border-surface-border bg-white p-6 shadow-xl animate-fade-in">
+      <div className="relative w-full max-w-md rounded-2xl border border-brand-brown bg-white p-6 shadow-xl animate-fade-in">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-bold text-gray-900">Add New Subject</h2>
@@ -84,7 +84,7 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Data Structures"
-            className="w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand-muted"
+            className="w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30"
           />
         </div>
 
@@ -98,7 +98,7 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder="e.g. CS 201"
-            className="w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand-muted"
+            className="w-full rounded-lg border border-surface-border bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30"
           />
         </div>
 
@@ -138,7 +138,7 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
                   onClick={() => setIcon(iconName)}
                   className={`flex h-10 w-10 items-center justify-center rounded-lg border transition-all ${
                     icon === iconName
-                      ? "border-brand bg-brand-muted text-brand-dark"
+                      ? "border-brand-gold bg-brand-yellow-light text-brand-teal-dark"
                       : "border-surface-border bg-white text-surface-muted hover:border-gray-300 hover:text-gray-700"
                   }`}
                   aria-label={`Select icon ${iconName}`}
@@ -161,7 +161,7 @@ export default function AddSubjectModal({ isOpen, onClose, onAdd }) {
           <button
             onClick={handleSubmit}
             disabled={!name.trim() || !code.trim() || submitting}
-            className="flex items-center gap-2 rounded-lg bg-brand px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center gap-2 rounded-lg bg-brand-yellow px-5 py-2 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold disabled:cursor-not-allowed disabled:opacity-50"
           >
             {submitting && <LoadingSpinner variant="button" />}
             {submitting ? "Creating..." : "Create Subject"}

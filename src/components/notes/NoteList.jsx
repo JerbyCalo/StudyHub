@@ -21,17 +21,17 @@ export default function NoteList({ notes, subjectId, loading, currentUserId }) {
       {/* Header */}
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <FileText className="h-5 w-5 text-brand" />
+          <FileText className="h-5 w-5 text-brand-teal-dark" />
           <h2 className="text-lg font-bold text-gray-900">Notes</h2>
           {!loading && (
-            <span className="rounded-full bg-brand-muted px-2 py-0.5 text-xs font-medium text-brand-dark">
+            <span className="rounded-full bg-brand-teal px-2 py-0.5 text-xs font-medium text-brand-teal-dark">
               {notes.length} {notes.length === 1 ? "note" : "notes"}
             </span>
           )}
         </div>
         <button
           onClick={handleNewNote}
-          className="flex items-center gap-1.5 rounded-lg bg-brand px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+          className="flex items-center gap-1.5 rounded-lg bg-brand-yellow px-3 py-1.5 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold"
         >
           <Plus className="h-4 w-4" />
           New Note
@@ -44,7 +44,7 @@ export default function NoteList({ notes, subjectId, loading, currentUserId }) {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="animate-pulse rounded-xl border border-surface-border bg-surface-card p-4"
+              className="animate-pulse rounded-xl border border-brand-brown bg-surface-card p-4"
             >
               <div className="h-4 w-1/2 rounded bg-gray-200" />
               <div className="mt-2 h-3 w-full rounded bg-gray-100" />

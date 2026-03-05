@@ -33,12 +33,12 @@ export default function LoginPage() {
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
         <div className="mb-8 flex items-center justify-center gap-2">
-          <ArrowLeftRight className="h-8 w-8 text-brand" />
-          <span className="text-2xl font-bold text-brand">Baylo</span>
+          <ArrowLeftRight className="h-8 w-8 text-brand-teal-dark" />
+          <span className="text-2xl font-bold text-brand-teal-dark">Baylo</span>
         </div>
 
         {/* Card */}
-        <div className="rounded-xl bg-surface-card p-8 shadow-md border border-surface-border">
+        <div className="rounded-xl bg-surface-card p-8 shadow-md border border-brand-brown">
           <h1 className="mb-1 text-2xl font-bold text-gray-900">
             Welcome back
           </h1>
@@ -57,7 +57,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full rounded-lg border border-surface-border bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand-muted transition-all"
+                className="w-full rounded-lg border border-brand-brown bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 transition-all"
               />
             </div>
 
@@ -71,7 +71,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="w-full rounded-lg border border-surface-border bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand-muted transition-all"
+                className="w-full rounded-lg border border-brand-brown bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 transition-all"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleLogin();
                 }}
@@ -82,7 +82,7 @@ export default function LoginPage() {
             <button
               onClick={handleLogin}
               disabled={submitting}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-yellow px-4 py-2.5 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? (
                 <>
@@ -100,7 +100,7 @@ export default function LoginPage() {
             Don&apos;t have an account?{" "}
             <Link
               href="/register"
-              className="font-medium text-brand hover:text-brand-dark transition-colors"
+              className="font-medium text-brand-teal hover:text-brand-teal-dark transition-colors"
             >
               Create one
             </Link>

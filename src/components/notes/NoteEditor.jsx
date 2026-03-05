@@ -24,7 +24,7 @@ function ToolbarButton({ onClick, isActive, icon: Icon, label }) {
       onClick={onClick}
       className={`rounded-lg p-2 transition-colors ${
         isActive
-          ? "bg-brand-muted text-brand-dark"
+          ? "bg-brand-yellow-light text-brand-teal-dark"
           : "text-surface-muted hover:bg-surface hover:text-gray-700"
       }`}
       aria-label={label}
@@ -67,9 +67,9 @@ export default function NoteEditor({ initialContent = "", onChange }) {
   if (!editor) return null;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-surface-border bg-white">
+    <div className="overflow-hidden rounded-xl border border-brand-brown bg-white">
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-0.5 border-b border-surface-border bg-surface px-2 py-1.5">
+      <div className="flex flex-wrap items-center gap-0.5 border-b border-brand-brown bg-surface px-2 py-1.5">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
           isActive={editor.isActive("bold")}
@@ -83,11 +83,10 @@ export default function NoteEditor({ initialContent = "", onChange }) {
           label="Italic"
         />
 
-        <div className="mx-1 h-6 w-px bg-surface-border" />
+        <div className="mx-1 h-6 w-px bg-brand-brown/30" />
 
         <ToolbarButton
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 1 }).run()
+          onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           }
           isActive={editor.isActive("heading", { level: 1 })}
           icon={Heading1}
@@ -110,7 +109,7 @@ export default function NoteEditor({ initialContent = "", onChange }) {
           label="Heading 3"
         />
 
-        <div className="mx-1 h-6 w-px bg-surface-border" />
+        <div className="mx-1 h-6 w-px bg-brand-brown/30" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -125,7 +124,7 @@ export default function NoteEditor({ initialContent = "", onChange }) {
           label="Ordered List"
         />
 
-        <div className="mx-1 h-6 w-px bg-surface-border" />
+        <div className="mx-1 h-6 w-px bg-brand-brown/30" />
 
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}

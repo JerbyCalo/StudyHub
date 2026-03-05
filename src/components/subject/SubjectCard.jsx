@@ -50,7 +50,7 @@ export default function SubjectCard({ subject, onDelete, currentUserId }) {
   return (
     <div
       onClick={handleCardClick}
-      className="group relative flex cursor-pointer overflow-hidden rounded-xl border border-surface-border bg-surface-card shadow-sm transition-shadow hover:shadow-md animate-fade-in"
+      className="group relative flex cursor-pointer overflow-hidden rounded-xl border border-brand-brown bg-surface-card shadow-sm transition-shadow hover:shadow-md animate-fade-in"
     >
       {/* Color accent bar */}
       <div
@@ -69,7 +69,7 @@ export default function SubjectCard({ subject, onDelete, currentUserId }) {
 
           <div className="flex items-center gap-2">
             {/* Member count badge */}
-            <span className="rounded-full bg-brand-muted px-2.5 py-0.5 text-xs font-medium text-brand-dark">
+            <span className="rounded-full bg-brand-teal px-2.5 py-0.5 text-xs font-medium text-brand-teal-dark">
               {memberCount} {memberCount === 1 ? "member" : "members"}
             </span>
 
@@ -87,7 +87,7 @@ export default function SubjectCard({ subject, onDelete, currentUserId }) {
               </button>
 
               {menuOpen && (
-                <div className="absolute right-0 top-full z-10 mt-1 w-44 rounded-lg border border-surface-border bg-white py-1 shadow-lg animate-fade-in">
+                <div className="absolute right-0 top-full z-10 mt-1 w-44 rounded-lg border border-brand-brown bg-white py-1 shadow-lg animate-fade-in">
                   <button
                     onClick={handleCopyShareCode}
                     className="flex w-full items-center gap-2 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-surface"

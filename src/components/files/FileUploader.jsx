@@ -64,8 +64,8 @@ export default function FileUploader({ onUpload, isUploading = false }) {
 
   if (isUploading) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-xl border-2 border-brand bg-brand-muted/30 p-8 text-center animate-fade-in">
-        <Loader2 className="mb-3 h-10 w-10 text-brand animate-spin" />
+      <div className="flex flex-col items-center justify-center rounded-xl border-2 border-brand-gold bg-brand-yellow-light/30 p-8 text-center animate-fade-in">
+        <Loader2 className="mb-3 h-10 w-10 text-brand-yellow animate-spin" />
         {uploadingName && (
           <p className="mb-1 max-w-full truncate text-sm font-medium text-gray-700">
             Uploading: {uploadingName}
@@ -85,14 +85,14 @@ export default function FileUploader({ onUpload, isUploading = false }) {
       onDragLeave={handleDragLeave}
       className={`flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 text-center transition-colors cursor-pointer ${
         dragOver
-          ? "border-brand bg-brand-muted/20"
-          : "border-surface-border bg-surface-card hover:border-brand/40"
+          ? "border-brand-gold bg-brand-yellow/20"
+          : "border-brand-brown bg-surface-card hover:border-brand-gold/40"
       }`}
       onClick={() => inputRef.current?.click()}
     >
       <Upload
         className={`mb-3 h-10 w-10 ${
-          dragOver ? "text-brand" : "text-surface-muted"
+          dragOver ? "text-brand-gold" : "text-surface-muted"
         }`}
       />
       <p className="text-sm font-medium text-gray-700">
@@ -107,7 +107,7 @@ export default function FileUploader({ onUpload, isUploading = false }) {
           e.stopPropagation();
           inputRef.current?.click();
         }}
-        className="mt-4 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+        className="mt-4 rounded-lg bg-brand-yellow px-4 py-2 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold"
       >
         Browse Files
       </button>

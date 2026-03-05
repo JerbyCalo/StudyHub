@@ -4,7 +4,7 @@ A student platform for exchanging notes, files, and knowledge with classmates. O
 
 ## Live Demo
 
-https://studyhub-byjc.vercel.app/
+https://baylo-byjc.vercel.app/
 
 ## ✨ Features
 

@@ -32,10 +32,10 @@ export default function MemberList({
     <div>
       {/* Header */}
       <div className="mb-4 flex items-center gap-2">
-        <Users className="h-5 w-5 text-brand" />
+        <Users className="h-5 w-5 text-brand-teal-dark" />
         <h2 className="text-lg font-bold text-gray-900">Members</h2>
         {!loading && (
-          <span className="rounded-full bg-brand-muted px-2 py-0.5 text-xs font-medium text-brand-dark">
+          <span className="rounded-full bg-brand-teal px-2 py-0.5 text-xs font-medium text-brand-teal-dark">
             {members.length} {members.length === 1 ? "member" : "members"}
           </span>
         )}
@@ -47,7 +47,7 @@ export default function MemberList({
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="flex items-center gap-3 rounded-xl border border-surface-border bg-surface-card px-4 py-3 animate-pulse"
+              className="flex items-center gap-3 rounded-xl border border-brand-brown bg-surface-card px-4 py-3 animate-pulse"
             >
               <div className="h-9 w-9 shrink-0 rounded-full bg-gray-200" />
               <div className="flex-1 space-y-2">

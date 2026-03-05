@@ -30,7 +30,7 @@ export default function ShareLinkModal({ subject, isOpen, onClose }) {
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-sm rounded-2xl border border-surface-border bg-white p-6 shadow-xl animate-fade-in">
+      <div className="relative w-full max-w-sm rounded-2xl border border-brand-brown bg-white p-6 shadow-xl animate-fade-in">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-bold text-gray-900">Share Subject</h2>
@@ -45,7 +45,7 @@ export default function ShareLinkModal({ subject, isOpen, onClose }) {
 
         {/* Share code display */}
         <div className="mb-4 flex items-center justify-center">
-          <span className="rounded-xl bg-brand-muted px-6 py-3 text-2xl font-bold tracking-[0.3em] text-brand-dark mono">
+          <span className="rounded-xl bg-brand-yellow-light px-6 py-3 text-2xl font-bold tracking-[0.3em] text-brand-teal-dark mono">
             {subject.shareCode}
           </span>
         </div>
@@ -56,7 +56,7 @@ export default function ShareLinkModal({ subject, isOpen, onClose }) {
           className={`mb-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
             copied
               ? "bg-green-50 text-green-700"
-              : "bg-brand text-white hover:bg-brand-dark"
+              : "bg-brand-yellow text-brand-teal-dark hover:bg-brand-gold"
           }`}
         >
           {copied ? (

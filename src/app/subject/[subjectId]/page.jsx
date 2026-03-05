@@ -102,7 +102,7 @@ export default function SubjectDetailPage({ params }) {
 
         <main className="flex-1 p-6 space-y-6">
           {/* Subject header */}
-          <div className="rounded-xl border border-surface-border bg-surface-card shadow-sm overflow-hidden">
+          <div className="rounded-xl border border-brand-brown bg-surface-card shadow-sm overflow-hidden">
             <div className="flex items-center gap-4 p-5">
               {/* Left color accent bar */}
               <div
@@ -133,7 +133,7 @@ export default function SubjectDetailPage({ params }) {
                   <h1 className="text-xl font-bold text-gray-900 truncate">
                     {subject.name}
                   </h1>
-                  <span className="shrink-0 rounded-full border border-surface-border bg-surface px-2.5 py-0.5 text-xs font-medium text-surface-muted">
+                  <span className="shrink-0 rounded-full border border-brand-brown bg-surface px-2.5 py-0.5 text-xs font-medium text-surface-muted">
                     {subject.code}
                   </span>
                 </div>
@@ -169,10 +169,10 @@ export default function SubjectDetailPage({ params }) {
             {/* Files */}
             <section>
               <div className="mb-4 flex items-center gap-2">
-                <FolderOpen className="h-5 w-5 text-brand" />
+                <FolderOpen className="h-5 w-5 text-brand-teal-dark" />
                 <h2 className="text-lg font-bold text-gray-900">Files</h2>
                 {files.length > 0 && (
-                  <span className="rounded-full bg-brand-muted px-2.5 py-0.5 text-xs font-semibold text-brand">
+                  <span className="rounded-full bg-brand-teal px-2.5 py-0.5 text-xs font-semibold text-brand-teal-dark">
                     {files.length} {files.length === 1 ? "file" : "files"}
                   </span>
                 )}

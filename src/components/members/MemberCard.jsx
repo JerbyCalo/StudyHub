@@ -13,9 +13,9 @@ export default function MemberCard({ member, isOwner, currentUserId }) {
   const isCurrentUser = member.uid === currentUserId;
 
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-surface-border bg-surface-card px-4 py-3 shadow-sm animate-fade-in">
+    <div className="flex items-center gap-3 rounded-xl border border-brand-brown bg-surface-card px-4 py-3 shadow-sm animate-fade-in">
       {/* Avatar */}
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-semibold text-white">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-yellow text-sm font-semibold text-brand-teal-dark">
         {initial}
       </div>
 
@@ -28,14 +28,14 @@ export default function MemberCard({ member, isOwner, currentUserId }) {
 
           {/* Owner badge — takes priority; never show "You" alongside it */}
           {isOwner && (
-            <span className="shrink-0 rounded-full bg-brand px-2 py-0.5 text-xs font-semibold text-white">
+            <span className="shrink-0 rounded-full bg-brand-yellow px-2 py-0.5 text-xs font-semibold text-brand-teal-dark">
               Owner
             </span>
           )}
 
           {/* You badge — only when not the owner */}
           {!isOwner && isCurrentUser && (
-            <span className="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-surface-muted">
+            <span className="shrink-0 rounded-full bg-brand-teal px-2 py-0.5 text-xs font-medium text-brand-teal-dark">
               You
             </span>
           )}

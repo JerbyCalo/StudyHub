@@ -125,7 +125,7 @@ function ViewEditNotePageInner({ params }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Note title"
-            className="w-full rounded-xl border border-surface-border bg-white px-4 py-3 text-lg font-semibold text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand-muted"
+            className="w-full rounded-xl border border-brand-brown bg-white px-4 py-3 text-lg font-semibold text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30"
           />
 
           {/* Meta info */}
@@ -174,7 +174,7 @@ function ViewEditNotePageInner({ params }) {
               <button
                 onClick={handleSave}
                 disabled={!title.trim() || saving}
-                className="flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex items-center gap-2 rounded-lg bg-brand-yellow px-5 py-2.5 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {saving ? (
                   <>

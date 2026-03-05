@@ -29,17 +29,17 @@ export default function Sidebar({
       {/* Sidebar panel */}
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-surface-border bg-white transition-transform duration-200 ease-in-out
+          fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-brand-brown bg-brand-teal-dark transition-transform duration-200 ease-in-out
           lg:static lg:translate-x-0
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* Sidebar header (mobile only — close button) */}
-        <div className="flex h-16 items-center justify-between border-b border-surface-border px-4 lg:hidden">
-          <span className="text-lg font-bold text-gray-900">Subjects</span>
+        <div className="flex h-16 items-center justify-between border-b border-brand-brown px-4 lg:hidden">
+          <span className="text-lg font-bold text-white">Subjects</span>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-surface-muted transition-colors hover:bg-surface hover:text-gray-900"
+            className="rounded-lg p-1.5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             aria-label="Close sidebar"
           >
             <X className="h-5 w-5" />
@@ -47,8 +47,8 @@ export default function Sidebar({
         </div>
 
         {/* Sidebar title (desktop only) */}
-        <div className="hidden lg:flex h-16 items-center border-b border-surface-border px-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-surface-muted">
+        <div className="hidden lg:flex h-16 items-center border-b border-brand-brown px-4">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white/50">
             My Subjects
           </span>
         </div>
@@ -66,8 +66,8 @@ export default function Sidebar({
                   group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors
                   ${
                     isActive
-                      ? "bg-brand-muted text-brand-dark"
-                      : "text-gray-700 hover:bg-surface"
+                    ? "bg-brand-yellow text-brand-teal-dark"
+                    : "text-white/80 hover:bg-white/10"
                   }
                 `}
               >
@@ -80,7 +80,7 @@ export default function Sidebar({
                   <p className="truncate">{subject.name}</p>
                   <p
                     className={`text-xs ${
-                      isActive ? "text-brand" : "text-surface-muted"
+                      isActive ? "text-brand-teal-dark" : "text-white/50"
                     }`}
                   >
                     {subject.code}
@@ -91,20 +91,20 @@ export default function Sidebar({
           })}
 
           {subjects.length === 0 && (
-            <p className="px-3 py-6 text-center text-sm text-surface-muted">
+            <p className="px-3 py-6 text-center text-sm text-white/50">
               No subjects yet
             </p>
           )}
         </nav>
 
         {/* Add Subject button — pinned at bottom */}
-        <div className="border-t border-surface-border p-3">
+        <div className="border-t border-brand-brown p-3">
           <button
             onClick={() => {
               if (onAddSubject) onAddSubject();
               onClose();
             }}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-yellow px-4 py-2.5 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold"
           >
             <Plus className="h-4 w-4" />
             Add Subject

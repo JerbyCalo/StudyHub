@@ -37,7 +37,7 @@ export default function LoadingSpinner({
 
   const spinner = (
     <div
-      className={`${sizeClasses[size]} rounded-full border-brand-muted border-t-brand animate-spin`}
+      className={`${sizeClasses[size]} rounded-full border-brand-yellow-light border-t-brand-yellow animate-spin`}
       role="status"
       aria-label="Loading"
     />

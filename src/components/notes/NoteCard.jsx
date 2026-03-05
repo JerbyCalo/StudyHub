@@ -37,7 +37,7 @@ export default function NoteCard({ note, subjectId, currentUserId }) {
   return (
     <div
       onClick={handleClick}
-      className="cursor-pointer rounded-xl border border-surface-border bg-surface-card p-4 shadow-sm transition-shadow hover:shadow-md animate-fade-in"
+      className="cursor-pointer rounded-xl border border-brand-brown bg-surface-card p-4 shadow-sm transition-shadow hover:shadow-md hover:shadow-brand-gold/20 animate-fade-in"
     >
       <h4 className="truncate text-sm font-semibold text-gray-900">
         {note.title}

@@ -92,7 +92,7 @@ export default function DashboardPage() {
               </button>
 
               {joinOpen && (
-                <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-surface-border bg-white p-4 shadow-lg animate-fade-in">
+                <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-brand-brown bg-white p-4 shadow-lg animate-fade-in">
                   <div className="flex items-center justify-between mb-3">
                     <p className="text-sm font-semibold text-gray-900">
                       Enter Share Code
@@ -110,12 +110,12 @@ export default function DashboardPage() {
                     onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
                     placeholder="e.g. ABC123"
                     maxLength={6}
-                    className="mb-3 w-full rounded-lg border border-surface-border bg-white px-3 py-2 text-center text-lg font-bold tracking-widest text-gray-900 uppercase placeholder-gray-400 outline-none focus:border-brand focus:ring-2 focus:ring-brand-muted mono"
+                    className="mb-3 w-full rounded-lg border border-brand-brown bg-white px-3 py-2 text-center text-lg font-bold tracking-widest text-gray-900 uppercase placeholder-gray-400 outline-none focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 mono"
                   />
                   <button
                     onClick={handleJoinByCode}
                     disabled={joinCode.trim().length !== 6 || joining}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-brand-yellow px-4 py-2 text-sm font-semibold text-brand-teal-dark transition-colors hover:bg-brand-gold disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {joining && <LoadingSpinner variant="button" />}
                     {joining ? "Joining..." : "Join Subject"}
